@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class leitura {
+public class Main {
 
     public static void main(String[] args) {
         int num = 0, cont = 0, men_valor = 0, mai_valor = 0;
