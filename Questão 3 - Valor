@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class valor {
+public class Main {
 
     public static boolean isPositive(float num) { 
         return num >= 0;
