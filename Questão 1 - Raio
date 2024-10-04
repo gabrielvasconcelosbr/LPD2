@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Raio {
 
   public static void main(String[] args) {
     System.out.println("Digite o raio da circunferencia: ");
