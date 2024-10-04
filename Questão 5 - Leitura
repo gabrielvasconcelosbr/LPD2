@@ -1,33 +1,51 @@
-import javax.swing.JOptionPane;
+import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-        int num = 0, cont = 0, men_valor = 0, mai_valor = 0;
+        Scanner scanner = new Scanner(System.in);
+
+        double valor;
+        double maior = Double.NEGATIVE_INFINITY;
+        double menor = Double.POSITIVE_INFINITY; 
 
         while (true) {
-            num = Integer
-                    .parseInt(JOptionPane.showInputDialog(null,
-                            "Digite um numero", "Numero",
-                            JOptionPane.QUESTION_MESSAGE));
-            if (num >= 0) {
-                cont++;
-                if (num > mai_valor) {
-                    mai_valor = num;
-                }
-                if (num < men_valor) {
-                    men_valor = num;
-                }
-
-            } else {
+            System.out.print("Por favor, insira um valor (ou digite 'sair' para encerrar): ");
+            String entrada = scanner.nextLine();
+            
+            if (entrada.equalsIgnoreCase("sair")) {
                 break;
             }
 
+            try {
+                valor = Double.parseDouble(entrada);
+
+                if (valor > 0) {
+                    System.out.println("O valor " + valor + " é positivo.");
+                } else if (valor < 0) {
+                    System.out.println("O valor " + valor + " é negativo.");
+                } else {
+                    System.out.println("O valor é zero.");
+                }
+
+                if (valor > maior) {
+                    maior = valor;
+                }
+                if (valor < menor) {
+                    menor = valor;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, insira um número válido.");
+            }
         }
 
-        System.out.println("A quantidade de numeros digitados é " + cont);
-        System.out.println("O maior valor digitado foi: " + mai_valor);
-        System.out.println("O menor valor digitado foi: " + men_valor);
-    }
+        
+        if (maior != Double.NEGATIVE_INFINITY && menor != Double.POSITIVE_INFINITY) {
+            System.out.println("Maior valor informado: " + maior);
+            System.out.println("Menor valor informado: " + menor);
+        } else {
+            System.out.println("Nenhum valor foi informado.");
+        }
 
+        scanner.close();
+    }
 }
